@@ -146,9 +146,9 @@ class PressingSpace_Example
    */
   public function register_post_types() {
 
-    /*
-      * Questions & Answers
-      */
+    /**
+     * Questions
+     */
     $labels = array(
       'name'               => _x( 'Question', 'post type general name', 'pressingspace-example' ),
       'singular_name'      => _x( 'Question', 'post type singular name', 'pressingspace-example' ),
@@ -188,6 +188,9 @@ class PressingSpace_Example
     );
     register_post_type( 'question', $args );
 
+    /**
+     * Group taxonomy
+     */
     register_taxonomy(
       'group', 
       array('question'), 
