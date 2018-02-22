@@ -64,8 +64,7 @@ class PressingSpace_Example {
   /**
    * Adds roles so we can organise categories
    */
-  public function get_roles( $reverse = false )
-  {
+  public function get_roles( $reverse = false ) {
     $groups = array(
       'group-1'    => __( 'Group 1' ),
       'group-2'    => __( 'Group 2' ),
@@ -85,8 +84,7 @@ class PressingSpace_Example {
   /**
    * Adds roles so we can organise categories
    */
-  public function add_roles()
-  {
+  public function add_roles() {
     foreach ( $this->get_roles(true) as $id => $name ) {
       add_role(
         $id,
@@ -112,8 +110,7 @@ class PressingSpace_Example {
   /**
    * Adds roles so we can organise categories
    */
-  public function remove_roles()
-  {
+  public function remove_roles() {
     foreach ( $this->get_roles() as $id => $name ) {
       remove_role( $id );
     }
