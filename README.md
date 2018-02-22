@@ -27,13 +27,15 @@ wp --info # This should output some WP-CLI info
 
 ### Install Composer packages
 
-Install [Composer](https://getcomposer.org/) (globally, using e.g. `mv composer.phar /usr/local/bin/composer`)
+[Install Composer](https://getcomposer.org/) (globally, using e.g. `mv composer.phar /usr/local/bin/composer`), then:
 
 ```bash
 composer install
 ```
 
-In this example, this installs any composer packages required by the `pressingspace-example` plugin.
+In this example, this installs any composer packages required by the `pressingspace-example` plugin, into the plugin `vendor` directory.
+
+Until the example plugin has been developed a little more, there are currently no Composer packages installed. I'll add some as an example asap.
 
 ### Install Wordpress
 
