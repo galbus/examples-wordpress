@@ -12,8 +12,8 @@
 /**
  * PressingSpace_Example
  */
-class PressingSpace_Example {
- 
+class PressingSpace_Example
+{ 
 
   const VER = '0.0.1-dev';
   const DB_VER = 1;
