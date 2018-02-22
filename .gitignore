@@ -1,18 +1,93 @@
+*~
+.DS_Store
+.svn
+.cvs
+bk.*
+*.bak
+*.swp
+Thumbs.db
+.phpintel/
 *.log
+
+# wordpress specific
 wp-config.php
-wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
-wp-content/blogs.dir/
-wp-content/cache/
-wp-content/upgrade/
-wp-content/uploads/
-wp-content/wp-cache-config.php
-wp-content/plugins/hello.php
+/public/.htaccess
+/public/license.txt
+/public/readme.html
+/public/sitemap.xml
+/public/sitemap.xml.gz
+/public/wp-config.php
+/public/wp-content/uploads/
+/public/wp-content/blogs.dir/
+/public/wp-content/upgrade/*
+/public/wp-content/backup-db/*
+/public/wp-content/advanced-cache.php
+/public/wp-content/wp-cache-config.php
+/public/wp-content/cache/*
+/public/wp-content/cache/supercache/*
+/public/wp-content/images/*
+/public/wp-content/plugins/*
+!/public/wp-content/plugins/pressingspace-example/
 
-/.htaccess
-/license.txt
-/readme.html
-/sitemap.xml
-/sitemap.xml.gz
+# wpengine specific
+.smushit-status
+.gitattributes
+_wpeprivate
+/public/wp-content/object-cache.php
+/public/wp-content/mu-plugins/mu-plugin.php
+/public/wp-content/mu-plugins/slt-force-strong-passwords.php
+/public/wp-content/mu-plugins/limit-login-attempts
+/public/wp-content/mu-plugins/wpengine-common
+/public/wp-content/mysql.sql
 
+# wp core (as of 3.4.1)
+/public/db-config.php
+/public/index.php
+/public/license.txt
+/public/readme.html
+/public/wp-activate.php
+/public/wp-app.php
+/public/wp-atom.php
+/public/wp-blog-header.php
+/public/wp-comments-post.php
+/public/wp-commentsrss2.php
+/public/wp-config-sample.php
+/public/wp-cron.php
+/public/wp-feed.php
+/public/wp-links-opml.php
+/public/wp-load.php
+/public/wp-login.php
+/public/wp-mail.php
+/public/wp-rdf.php
+/public/wp-rss.php
+/public/wp-rss2.php
+/public/wp-pass.php
+/public/wp-register.php
+/public/wp-settings.php
+/public/wp-signup.php
+/public/wp-trackback.php
+/public/xmlrpc.php
+/public/wp-admin
+/public/wp-includes
+/public/wp-content/index.php
+
+# Default plugins & themes
+/public/wp-content/plugins/index.php
+/public/wp-content/plugins/akismet
+/public/wp-content/themes/index.php
+/public/wp-content/themes/twentyfifteen
+/public/wp-content/themes/twentyseventeen
+/public/wp-content/themes/twentysixteen
+
+# Example Plugin
+/public/wp-content/plugins/pressingspace-example/vendor/*
+
+# Example Theme
+*.sass-cache*
+public/wp-content/themes/pressingspace-example/assets/css/*
+public/wp-content/themes/pressingspace-example/assets/js/*
+# !public/wp-content/themes/pressingspace-example/assets/js/scripts/
+# !public/wp-content/themes/pressingspace-example/assets/js/tinymce/
+/public/wp-content/themes/pressingspace-example/bower_components/*
+/public/wp-content/themes/pressingspace-example/node_modules/*
+/public/wp-content/themes/pressingspace-example/vendor/*

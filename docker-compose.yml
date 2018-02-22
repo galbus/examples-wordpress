@@ -1,0 +1,36 @@
+version: "2.1"
+
+services:
+
+  my-wpdb:
+    build: ./containers/mariadb/
+    volumes:
+      - "./containers/mariadb/data:/var/lib/mysql"
+    ports:
+      - 8081:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+  my-wp:
+    build: ./containers/wordpress/
+    # image: wordpress
+    volumes:
+      - "./public:/var/www/html"
+    ports:
+      - 8080:80
+    links:
+      - my-wpdb:mysql
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+
+  my-wpcli:
+    image: tatemz/wp-cli
+    volumes_from:
+      - my-wp
+    links:
+      - my-wpdb:mysql
+    entrypoint: wp  
+    command: "--info"
+
+volumes:
+    data:

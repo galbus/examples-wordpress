@@ -1,0 +1,23 @@
+{
+    "name": "Pressing Space: Wordpress Examples",
+    "version": "1.0.0",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Stuart McAlpine",
+            "email": "stuart.mcalpine@pressingspace.com",
+            "homepage": "https://pressingspace.com",
+            "role": "Developer"
+        }
+    ],
+    "config" : {
+        "vendor-dir" : "public/wp-content/plugins/pressingspace-example/vendor"
+    },
+    "extra": {
+        "installer-paths": {
+            "public/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ]
+        }
+    }
+}
