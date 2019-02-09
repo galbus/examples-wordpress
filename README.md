@@ -17,12 +17,10 @@ git clone git@github.com:galbus/examples-wordpress.git
 cd examples-wordpress
 ```
 
-### Docker up
+### Auto Wordpress setup
 
 ```bash
-docker-compose up -d
-alias wp="docker-compose run --rm cli"
-wp --info # This should output some WP-CLI info
+make wordpress_install
 ```
 
 ### Install Composer packages
@@ -36,15 +34,6 @@ composer install
 In this example, this installs any composer packages required by the `pressingspace-example` plugin, into the plugin `vendor` directory.
 
 Until the example plugin has been developed a little more, there are currently no Composer packages installed. I'll add some as an example asap.
-
-### Install Wordpress
-
-```bash
-cd public/
-wp core download
-wp core install --url="localhost" --title="Pressing Space: Wordpress Examples" --admin_user="admin" --admin_password="password" --admin_email="stuart.mcalpine@pressingspace.com"
-wp rewrite structure '/%postname%/'
-```
 
 ### Install example Wordpress plugin
 
