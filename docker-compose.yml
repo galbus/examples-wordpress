@@ -1,41 +1,52 @@
-version: "3.7"
+version: '3'  
 
 services:
-
-  db:
-    # build: ./containers/mariadb/
-    image: mariadb:latest
+  wordpress_php:
+    build: ./docker/wordpress/php/
+    depends_on:
+      - wordpress_database
     volumes:
-      - data:/var/lib/mysql
-    ports:
-      - 8081:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: password
+      - ./docker/wordpress/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+      - ./wordpress:/var/www/wordpress
+    working_dir: /var/www/wordpress
 
-  web:
-    # build: ./containers/wordpress/
-    image: wordpress:php7.3-fpm
-    volumes:
-      - php:/var/www/html #<container_name>:<mount_point>
-    ports:
-      - 8080:80
-    links:
-      - db:data
+  wordpress_database:
+    image: mysql:5.7
+    restart: always
     environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: password
+
+  wordpress_webserver:
+    image: nginx:1.14-alpine
+    depends_on:
+      - wordpress_php
+    volumes:
+      - ./docker/wordpress/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./wordpress:/var/www/wordpress
+    ports:
+      - 80:80
+  
+  wordpress_toolbox:
+    build: ./docker/wordpress/toolbox/
+    volumes:
+      - ./wordpress:/var/www/wordpress
+    working_dir: /var/www/wordpress
+    depends_on:
+      - wordpress_database
+    environment:
+      WORDPRESS_VERSION: 5.0.3
+      WORDPRESS_LOCALE: en_GB
+      WORDPRESS_DB_HOST: wordpress_database
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: password
-
-  cli:
-    image: wordpress:cli
-    volumes:
-      - php:/var/www/html #<container_name>:<mount_point>
-    links:
-      - db:data
-    entrypoint: wp  
-    command: "--info"
-
-volumes:
-    data:
-      # driver: local
-      # driver_opts:
-      #   mountpoint: ./containers/mariadb/data
-    php:
+      WORDPRESS_WEBSITE_TITLE: "Pressing Space: Wordpress Examples"
+      WORDPRESS_WEBSITE_URL: "http://localhost"
+      WORDPRESS_WEBSITE_URL_WITHOUT_HTTP: "localhost"
+      WORDPRESS_WEBSITE_POST_URL_STRUCTURE: "/%postname%/"
+      WORDPRESS_ADMIN_USER: "admin"
+      WORDPRESS_ADMIN_PASSWORD: "password"
+      WORDPRESS_ADMIN_EMAIL: "admin@example.com"
