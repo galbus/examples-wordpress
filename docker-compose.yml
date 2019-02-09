@@ -33,6 +33,8 @@ services:
     build: ./docker/wordpress/toolbox/
     volumes:
       - ./wordpress:/var/www/wordpress
+      - ./src/themes/pressingspace-example:/var/www/wordpress/wp-content/themes/pressingspace-example
+      - ./src/plugins/pressingspace-example:/var/www/wordpress/wp-content/plugins/pressingspace-example
     working_dir: /var/www/wordpress
     depends_on:
       - wordpress_database
