@@ -1,36 +1,41 @@
-version: "2.1"
+version: "3.7"
 
 services:
 
-  my-wpdb:
-    build: ./containers/mariadb/
+  db:
+    # build: ./containers/mariadb/
+    image: mariadb:latest
     volumes:
-      - "./containers/mariadb/data:/var/lib/mysql"
+      - data:/var/lib/mysql
     ports:
       - 8081:3306
     environment:
       MYSQL_ROOT_PASSWORD: password
 
-  my-wp:
-    build: ./containers/wordpress/
-    # image: wordpress
+  web:
+    # build: ./containers/wordpress/
+    image: wordpress:php7.3-fpm
     volumes:
-      - "./public:/var/www/html"
+      - php:/var/www/html #<container_name>:<mount_point>
     ports:
       - 8080:80
     links:
-      - my-wpdb:mysql
+      - db:data
     environment:
       WORDPRESS_DB_PASSWORD: password
 
-  my-wpcli:
-    image: tatemz/wp-cli
-    volumes_from:
-      - my-wp
+  cli:
+    image: wordpress:cli
+    volumes:
+      - php:/var/www/html #<container_name>:<mount_point>
     links:
-      - my-wpdb:mysql
+      - db:data
     entrypoint: wp  
     command: "--info"
 
 volumes:
     data:
+      # driver: local
+      # driver_opts:
+      #   mountpoint: ./containers/mariadb/data
+    php:

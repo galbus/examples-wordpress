@@ -21,7 +21,7 @@ cd examples-wordpress
 
 ```bash
 docker-compose up -d
-alias wp="docker-compose run --rm my-wpcli"
+alias wp="docker-compose run --rm cli"
 wp --info # This should output some WP-CLI info
 ```
 
