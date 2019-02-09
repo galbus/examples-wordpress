@@ -1,9 +1,9 @@
 FROM wordpress:php7.1-apache
 
-LABEL com.pressingspace.dockerfile.wordpress.version="1.0.0"
+LABEL com.pressingspace.dockerfile.wordpress.version="1.1.0"
 LABEL com.pressingspace.dockerfile.wordpress.name="Wordpress Dockerfile"
 LABEL com.pressingspace.dockerfile.wordpress.vendor="Pressing Space"
-LABEL com.pressingspace.dockerfile.wordpress.maintainer="stuart.mcalpine@pressingspace.com"
+LABEL com.pressingspace.dockerfile.wordpress.maintainer="stu@pressingspace.com"
     
 RUN apt-get -y update \
     && apt-get install -y --force-yes --no-install-recommends less libxml2-dev
