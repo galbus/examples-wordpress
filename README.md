@@ -1,6 +1,6 @@
-# Examples: Wordpress
+# Wordpress Starter
 
-My typical approach to Wordpress plugin and theme development, as a Dockerised Wordpress application.
+A Dockerised Wordpress application with a starter plugin and theme.
 
 ## Quickstart
 
@@ -33,7 +33,7 @@ wait a while...
 make clean
 ```
 
-* Removes core Wordpress files
+* Deletes the core Wordpress files
 * Removes the Docker containers
 
 ## Notes
@@ -64,3 +64,12 @@ make clean
 ### Permissions
 
 Uploaded images and other assets aren't accessible by the web server: they 404
+
+## License
+
+This project is licensed under the Unlicense - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgments
+
+* [Wordpress the right way (part 1): setup](http://blog.michaelperrin.fr/2018/10/26/automate-wordpress-part-1/)
+* [Keeping Plugins Clean: Using Activate, Deactivate and Uninstall Hooks](https://premium.wpmudev.org/blog/activate-deactivate-uninstall-hooks/)
