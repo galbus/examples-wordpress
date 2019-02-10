@@ -42,5 +42,6 @@ configure:
 	$(WP_CLI) plugin activate ${WORDPRESS_PLUGIN_ID}
 
 	@echo "⚙️ Getting JointsWP"
-	git clone https://github.com/JeremyEnglert/JointsWP.git ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}
+	git clone --depth=1 https://github.com/JeremyEnglert/JointsWP.git ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}
+	rm -rf ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}/.git
 	$(WP_CLI) theme activate ${WORDPRESS_THEME_ID}

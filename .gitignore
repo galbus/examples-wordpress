@@ -2,7 +2,6 @@
 .DS_Store
 .svn
 .cvs
-bk.*
 *.bak
 *.swp
 Thumbs.db
@@ -12,15 +11,16 @@ Thumbs.db
 # WordPress Core
 /wordpress
 
-# Example Plugin
-/public/wp-content/plugins/pressingspace-example/vendor/*
+# Uploads
+/wp-content/uploads
 
-# Example Theme
+# Plugin vendor files
+/wp-content/plugins/*/vendor/*
+
+# JointsWP template build files
 *.sass-cache*
-public/wp-content/themes/pressingspace-example/assets/css/*
-public/wp-content/themes/pressingspace-example/assets/js/*
-# !public/wp-content/themes/pressingspace-example/assets/js/scripts/
-# !public/wp-content/themes/pressingspace-example/assets/js/tinymce/
-/public/wp-content/themes/pressingspace-example/bower_components/*
-/public/wp-content/themes/pressingspace-example/node_modules/*
-/public/wp-content/themes/pressingspace-example/vendor/*
+/wp-content/themes/*/assets/css/*
+/wp-content/themes/*/assets/js/*
+# !/wp-content/themes/*/assets/js/scripts/
+# !/wp-content/themes/*/assets/js/tinymce/
+/wp-content/themes/*/vendor/*
