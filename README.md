@@ -1,86 +1,53 @@
 # Examples: Wordpress
 
-A quick example of my typical overall approach to Wordpress plugin and theme development.
-
-As this is a demo of both plugin __and__ theme development, the entire project is a Dockerised Wordpress application. 
-
-If I were only working on individual plugins or themes then the project wouldn't include all the Docker stuff, and the plugin/theme would ideally be published to a private repo for simpler install and updates.
+My typical approach to Wordpress plugin and theme development, as a Dockerised Wordpress application.
 
 ## Quickstart
 
 [Get Docker](https://www.docker.com/get-docker), then:
 
-### Clone repo
+### 1. Clone this repo
 
 ```bash
 git clone git@github.com:galbus/examples-wordpress.git
 cd examples-wordpress
 ```
 
-### Auto Wordpress setup
+### 2. One-command setup
 
 ```bash
-make wordpress_install
+make install
 ```
 
-### Install Composer packages
+wait a while...
 
-[Install Composer](https://getcomposer.org/) (globally, using e.g. `mv composer.phar /usr/local/bin/composer`), then:
+### 3. Visit site
 
-```bash
-composer install
-```
-
-In this example, this installs any composer packages required by the `pressingspace-example` plugin, into the plugin `vendor` directory.
-
-Until the example plugin has been developed a little more, there are currently no Composer packages installed. I'll add some as an example asap.
-
-### Install example Wordpress plugin
-
-```bash
-wp plugin activate pressingspace-example
-```
-
-### Install example Wordpress theme
-
-```bash
-wp theme activate pressingspace-example
-```
-
-### Install other Wordpress plugins (optional)
-
-```bash
-wp plugin install post-thumbnail-editor --activate
-```
-
-### Build theme
-
-[Install npm](https://www.npmjs.com/), then:
-
-```bash
-cd wp-content/themes/pressingspace-example/
-npm install
-```
-
-### Visit site
-
-[http://localhost:8080](http://localhost:8080)
+[http://localhost](http://localhost)
 
 ## Notes
 
-### Example Plugin
+### Plugin
 
-`/public/wp-content/plugins/pressingspace-example`
+`/wp-content/plugins/custom-plugin`
 
-* The plugin follows an OO architecture which includes version numbers for both the plugin and the database.
-    * This enables us to write database upgrade scripts by comparing the version number in the plugin file to the version number stored in the database.
-* As this example has been prepared overnight there is limited functionality. I've provided some example methods which add custom post types and remove options from the admin menu.
-* I would have liked to demonstrate some 3rd-party API integration, but time hasn't allowed this.
+* The plugin follows an OO architecture which includes version numbers for both the plugin, and the database.
+  * This enables us to write database upgrade scripts by comparing the version number in the plugin file to the version number stored in the database.
+* Some example methods have been included, which:
+  * adds a custom post type (Questions)
+  * adds some custom user roles
+  * removes some admin menu options
 
-### Example Theme
+### Theme
 
-`/public/wp-content/themes/pressingspace-example`
+`/wp-content/themes/custom-theme`
+(this file will only exist after a successful `make install`)
 
-* I've recently been using [JointsWP](http://jointswp.com/) as a start for theme development.
-* JointsWP is a lot like [FoundationPress](https://foundationpress.olefredrik.com/), but the [Foundation for Sites](https://foundation.zurb.com/sites.html) npm package can be updated a lot easier __(I found with JointsWP that you had to wait until the project maintainer had upgraded Foundation, which isn't ideal)__.
-* As this example has been prepared overnight the styling and base functionality has been left untouched. The next step would be to apply styles and write any custom (__theme-specific__) PHP/JavaScript for the theme.
+* A [JointsWP](http://jointswp.com/) starter theme, ready for customisation.
+  * JointsWP is a lot like [FoundationPress](https://foundationpress.olefredrik.com/), but with the added benefit that [Foundation for Sites](https://foundation.zurb.com/sites.html) can be updated much easier __(when I used FoundationPress I needed to wait for the project maintainer to update the Foundation for Sites package)__.
+* This is a `git clone` of the JointsWP master branch.
+* View the [JointsWP docs](http://jointswp.com/docs/) to see how to get started.
+
+## Known issues
+
+* Permissions on shared volumes need to be investigated as uploaded images and other assets aren't accessible by the web server
