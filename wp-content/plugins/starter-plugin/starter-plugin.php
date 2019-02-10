@@ -1,20 +1,23 @@
 <?php
 /*
-Plugin Name: Custom Plugin
-Plugin URI: https://pressingspace.com/
-Description: Example plugin structure for a Pressing Space project
+Plugin Name: Starter Plugin
+Plugin URI: https://github.com/galbus/wordpress-starter
+Description: A starter Wordpress plugin
 Author: Pressing Space
 Version: 0.0.1 (Development)
 Author URI: https://pressingspace.com/
-Text Domain: pressingspace-custom
+Text Domain: starter-plugin
 */
  
 /**
- * PressingSpace_Custom
+ * PressingSpace_StarterPlugin
  */
-class PressingSpace_Custom
+class PressingSpace_StarterPlugin
 { 
+    // Plugin version
     const VER = '0.0.1-dev';
+
+    // Database version
     const DB_VER = 1;
 
     /**
@@ -60,7 +63,7 @@ class PressingSpace_Custom
     /**
      * Define a custom set of admin roles
      */
-    public function get_roles( $reverse = false )
+    public function get_roles( bool $reverse = false )
     {
         $groups = array(
             'group-1'    => __( 'Group 1' ),
@@ -118,8 +121,8 @@ class PressingSpace_Custom
      */
     public function init_options()
     {
-        update_option( 'PressingSpace_Custom_ver', self::VER );
-        add_option( 'PressingSpace_Custom_db_ver', self::DB_VER );
+        update_option( 'PressingSpace_StarterPlugin_ver', self::VER );
+        add_option( 'PressingSpace_StarterPlugin_db_ver', self::DB_VER );
     }
 
     /**
@@ -128,10 +131,10 @@ class PressingSpace_Custom
     public function admin_notices()
     {
         echo '<div class="error">
-                <p>The <strong>Pressing Space Example</strong> plugin has deactivated itself because a dependent plugin has been disabled.</p>
+                <p>The <strong>Starter Plugin</strong> plugin has deactivated itself because a dependent plugin has been disabled.</p>
                 <p>Please make sure that the following dependent plugins are all enabled:</p>
                 <ul>
-                    <li><a href="">Plugin name</a></li>
+                    <li><a href="">Dependent plugin name</a></li>
                 </ul>
             </div>';
     }
@@ -146,20 +149,20 @@ class PressingSpace_Custom
          * Questions
          */
         $labels = array(
-            'name'               => _x( 'Question', 'post type general name', 'pressingspace-custom' ),
-            'singular_name'      => _x( 'Question', 'post type singular name', 'pressingspace-custom' ),
-            'menu_name'          => _x( 'Questions', 'admin menu', 'pressingspace-custom' ),
-            'name_admin_bar'     => _x( 'Question', 'add new on admin bar', 'pressingspace-custom' ),
-            'add_new'            => _x( 'Add New', 'question', 'pressingspace-custom' ),
-            'add_new_item'       => __( 'Add New Question', 'pressingspace-custom' ),
-            'new_item'           => __( 'New Item', 'pressingspace-custom' ),
-            'edit_item'          => __( 'Edit Item', 'pressingspace-custom' ),
-            'view_item'          => __( 'View Item', 'pressingspace-custom' ),
-            'all_items'          => __( 'All Questions', 'pressingspace-custom' ),
-            'search_items'       => __( 'Search Questions', 'pressingspace-custom' ),
-            'parent_item_colon'  => __( 'Parent Item:', 'pressingspace-custom' ),
-            'not_found'          => __( 'No Items found.', 'pressingspace-custom' ),
-            'not_found_in_trash' => __( 'No Items found in Trash.', 'pressingspace-custom' )
+            'name'               => _x( 'Question', 'post type general name', 'starter-plugin' ),
+            'singular_name'      => _x( 'Question', 'post type singular name', 'starter-plugin' ),
+            'menu_name'          => _x( 'Questions', 'admin menu', 'starter-plugin' ),
+            'name_admin_bar'     => _x( 'Question', 'add new on admin bar', 'starter-plugin' ),
+            'add_new'            => _x( 'Add New', 'question', 'starter-plugin' ),
+            'add_new_item'       => __( 'Add New Question', 'starter-plugin' ),
+            'new_item'           => __( 'New Item', 'starter-plugin' ),
+            'edit_item'          => __( 'Edit Item', 'starter-plugin' ),
+            'view_item'          => __( 'View Item', 'starter-plugin' ),
+            'all_items'          => __( 'All Questions', 'starter-plugin' ),
+            'search_items'       => __( 'Search Questions', 'starter-plugin' ),
+            'parent_item_colon'  => __( 'Parent Item:', 'starter-plugin' ),
+            'not_found'          => __( 'No Items found.', 'starter-plugin' ),
+            'not_found_in_trash' => __( 'No Items found in Trash.', 'starter-plugin' )
         );
         $args = array(
             'labels'              => $labels,
@@ -221,6 +224,6 @@ class PressingSpace_Custom
     }
 }
  
-global $PressingSpace_Custom;
-$PressingSpace_Custom = new PressingSpace_Custom();
-$PressingSpace_Custom->bootstrap();
+global $PressingSpace_StarterPlugin;
+$PressingSpace_StarterPlugin = new PressingSpace_StarterPlugin();
+$PressingSpace_StarterPlugin->bootstrap();

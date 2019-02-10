@@ -38,10 +38,12 @@ configure:
 	$(WP_CLI) config set WP_CONTENT_DIR ${WORDPRESS_CONTENT_DIRECTORY}
 	$(WP_CLI) config set WP_CONTENT_URL ${WORDPRESS_WEBSITE_URL}/wp-content
 
-	@echo "⚙️ Enabling default Custom Plugin"
+	@echo "⚙️ Activating Starter Plugin"
 	$(WP_CLI) plugin activate ${WORDPRESS_PLUGIN_ID}
 
-	@echo "⚙️ Getting JointsWP"
+	@echo "⬇️ Downloading JointsWP Starter Theme"
 	git clone --depth=1 https://github.com/JeremyEnglert/JointsWP.git ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}
 	rm -rf ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}/.git
+
+	@echo "⬇️ Activating JointsWP Starter Theme"
 	$(WP_CLI) theme activate ${WORDPRESS_THEME_ID}

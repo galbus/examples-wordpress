@@ -40,7 +40,7 @@ make clean
 
 ### Plugin
 
-`/wp-content/plugins/custom-plugin`
+`/wp-content/plugins/starter-plugin`
 
 * The plugin follows an OO architecture which includes version numbers for both the plugin, and the database.
   * This enables us to write database upgrade scripts by comparing the version number in the plugin file to the version number stored in the database.
@@ -51,7 +51,7 @@ make clean
 
 ### Theme
 
-`/wp-content/themes/custom-theme`
+`/wp-content/themes/starter-theme`
 (this file will only exist after a successful `make install`)
 
 * A [JointsWP](http://jointswp.com/) starter theme, ready for customisation.

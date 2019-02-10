@@ -17,7 +17,10 @@ Thumbs.db
 # Plugin vendor files
 /wp-content/plugins/*/vendor/*
 
-# JointsWP template build files
+# JointsWP Starter Theme
+/wp-content/themes/starter-theme
+
+# JointsWP build files
 *.sass-cache*
 /wp-content/themes/*/assets/css/*
 /wp-content/themes/*/assets/js/*

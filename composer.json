@@ -11,7 +11,7 @@
         }
     ],
     "config" : {
-        "vendor-dir" : "wp-content/plugins/custom-plugin/vendor"
+        "vendor-dir" : "wp-content/plugins/starter-plugin/vendor"
     },
     "extra": {
         "installer-paths": {
