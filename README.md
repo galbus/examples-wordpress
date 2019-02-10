@@ -61,7 +61,7 @@ make clean
 
 ## Known issues
 
-### Permissions
+### 1. Permissions
 
 Uploaded images and other assets aren't accessible by the web server: they 404
 
