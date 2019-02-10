@@ -2,6 +2,7 @@ FROM php:7.2-cli-alpine
 
 RUN apk add --no-cache curl  
 RUN apk add --no-cache make
+RUN apk add --no-cache git
 
 # Install WP-CLI in the toolbox
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar  

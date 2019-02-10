@@ -30,3 +30,17 @@ configure:
 
 	$(WP_CLI) option update siteurl "${WORDPRESS_WEBSITE_URL}"
 	$(WP_CLI) rewrite structure $(WORDPRESS_WEBSITE_POST_URL_STRUCTURE)
+
+	@echo "⚙️ Updating wp-config.php"
+	$(WP_CLI) config set WP_DEBUG ${WORDPRESS_DEBUG} --raw
+	$(WP_CLI) config set WP_HOME ${WORDPRESS_WEBSITE_URL}
+	$(WP_CLI) config set WP_SITEURL ${WORDPRESS_WEBSITE_URL}
+	$(WP_CLI) config set WP_CONTENT_DIR ${WORDPRESS_CONTENT_DIRECTORY}
+	$(WP_CLI) config set WP_CONTENT_URL ${WORDPRESS_WEBSITE_URL}/wp-content
+
+	@echo "⚙️ Enabling default Custom Plugin"
+	$(WP_CLI) plugin activate ${WORDPRESS_PLUGIN_ID}
+
+	@echo "⚙️ Getting JointsWP"
+	git clone https://github.com/JeremyEnglert/JointsWP.git ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}
+	$(WP_CLI) theme activate ${WORDPRESS_THEME_ID}
