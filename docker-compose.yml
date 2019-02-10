@@ -40,7 +40,7 @@ services:
     depends_on:
       - wordpress_database
     environment:
-      WORDPRESS_VERSION: 5.0.3
+      WORDPRESS_VERSION: latest
       WORDPRESS_LOCALE: en_GB
       WORDPRESS_DB_HOST: wordpress_database
       WORDPRESS_DB_NAME: wordpress
