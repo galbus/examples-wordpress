@@ -10,7 +10,7 @@ A Dockerised Wordpress application with a starter plugin and theme.
 
 ```bash
 git clone git@github.com:galbus/wordpress-starter.git
-cd examples-wordpress
+cd wordpress-starter
 ```
 
 ### 2. One-command setup
