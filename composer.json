@@ -11,11 +11,11 @@
         }
     ],
     "config" : {
-        "vendor-dir" : "public/wp-content/plugins/pressingspace-example/vendor"
+        "vendor-dir" : "wp-content/plugins/custom-plugin/vendor"
     },
     "extra": {
         "installer-paths": {
-            "public/wp-content/plugins/{$name}/": [
+            "wp-content/plugins/{$name}/": [
                 "type:wordpress-plugin"
             ]
         }
