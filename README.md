@@ -48,6 +48,20 @@ wait a while...
 * This is a `git clone` of the JointsWP master branch.
 * View the [JointsWP docs](http://jointswp.com/docs/) to see how to get started.
 
+## Additional Makefile commands
+
+### make clean
+
+```bash
+make clean
+```
+
+* Removes core Wordpress files
+* Removes the Docker containers
+
 ## Known issues
 
-* Permissions on shared volumes need to be investigated as uploaded images and other assets aren't accessible by the web server
+### Permissions
+
+Uploaded images and other assets aren't accessible by the web server: they 404
+
