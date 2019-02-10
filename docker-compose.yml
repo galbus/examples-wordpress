@@ -19,6 +19,7 @@ services:
       - ./wordpress:/var/www/wordpress
       - ./wp-content:/var/www/wp-content
     working_dir: /var/www/wordpress
+    # user: www-data
 
   wordpress_webserver:
     image: nginx:1.14-alpine
@@ -28,6 +29,8 @@ services:
       - ./docker/wordpress/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
       - ./wordpress:/var/www/wordpress
       - ./wp-content:/var/www/wp-content
+    links:
+      - wordpress_php
     ports:
       - 80:80
   
