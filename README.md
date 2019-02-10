@@ -9,7 +9,7 @@ My typical approach to Wordpress plugin and theme development, as a Dockerised W
 ### 1. Clone this repo
 
 ```bash
-git clone git@github.com:galbus/examples-wordpress.git
+git clone git@github.com:galbus/wordpress-starter.git
 cd examples-wordpress
 ```
 
@@ -24,6 +24,17 @@ wait a while...
 ### 3. Visit site
 
 [http://localhost](http://localhost)
+
+## Additional commands
+
+### make clean
+
+```bash
+make clean
+```
+
+* Removes core Wordpress files
+* Removes the Docker containers
 
 ## Notes
 
@@ -44,24 +55,12 @@ wait a while...
 (this file will only exist after a successful `make install`)
 
 * A [JointsWP](http://jointswp.com/) starter theme, ready for customisation.
-  * JointsWP is a lot like [FoundationPress](https://foundationpress.olefredrik.com/), but with the added benefit that [Foundation for Sites](https://foundation.zurb.com/sites.html) can be updated much easier __(when I used FoundationPress I needed to wait for the project maintainer to update the Foundation for Sites package)__.
+  * JointsWP is a lot like [FoundationPress](https://foundationpress.olefredrik.com/), but with the added benefit that [Foundation for Sites](https://foundation.zurb.com/sites.html) can be updated much easier _(when I used FoundationPress I needed to wait for the project maintainer to update the Foundation for Sites package)_.
 * This is a `git clone` of the JointsWP master branch.
 * View the [JointsWP docs](http://jointswp.com/docs/) to see how to get started.
-
-## Additional Makefile commands
-
-### make clean
-
-```bash
-make clean
-```
-
-* Removes core Wordpress files
-* Removes the Docker containers
 
 ## Known issues
 
 ### Permissions
 
 Uploaded images and other assets aren't accessible by the web server: they 404
-
