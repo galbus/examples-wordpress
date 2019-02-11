@@ -3,54 +3,76 @@ version: '3'
 services:
   wordpress_database:
     image: mariadb:latest
-    restart: always
+    container_name: wordpress_database
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - database-volume:/var/lib/mysql
+    networks:
+      - app-network
 
   wordpress_php:
     build: ./docker/wordpress/php/
+    container_name: wordpress_php
+    restart: unless-stopped
+    tty: true
     depends_on:
       - wordpress_database
     volumes:
       - ./docker/wordpress/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
-      - ./wordpress:/var/www/wordpress
-      - ./wp-content:/var/www/wp-content
-    working_dir: /var/www/wordpress
-    # user: www-data
+      - ./:/var/www
+      - ./wp-content:/var/www/wordpress/wp-content
+    networks:
+      - app-network
+    ports:
+      - "9000:9000"
 
   wordpress_webserver:
+    container_name: wordpress_webserver
     image: nginx:stable-alpine
+    restart: unless-stopped
+    tty: true
     depends_on:
       - wordpress_php
     volumes:
       - ./docker/wordpress/nginx/app.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./wordpress:/var/www/wordpress
-      - ./wp-content:/var/www/wp-content
-    links:
-      - wordpress_php
+      - ./:/var/www
+      - ./wp-content:/var/www/wordpress/wp-content
+    networks:
+      - app-network
+    working_dir: /var/www/wordpress
     ports:
-      - 80:80
+      - "80:80"
+      - "443:443"
   
   wordpress_toolbox:
     build: ./docker/wordpress/toolbox/
+    container_name: wordpress_toolbox
+    restart: unless-stopped
+    tty: true
     volumes:
-      - ./wordpress:/var/www/wordpress
-      - ./wp-content:/var/www/wp-content
+      - ./:/var/www
+      - ./wp-content:/var/www/wordpress/wp-content
+    networks:
+      - app-network
     working_dir: /var/www/wordpress
     depends_on:
       - wordpress_database
     environment:
       WORDPRESS_VERSION: latest
-      WORDPRESS_LOCALE: en_GB
+      WORDPRESS_LOCALE: en_US
       WORDPRESS_DB_HOST: wordpress_database
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: password
       WORDPRESS_DEBUG: "true"
-      WORDPRESS_CONTENT_DIRECTORY: "/var/www/wp-content"
+      WORDPRESS_DIR: "/var/www/wordpress"
       WORDPRESS_WEBSITE_TITLE: "Wordpress Starter"
       WORDPRESS_WEBSITE_URL: "http://localhost"
       WORDPRESS_WEBSITE_URL_WITHOUT_HTTP: "localhost"
@@ -60,3 +82,23 @@ services:
       WORDPRESS_ADMIN_EMAIL: "admin@example.com"
       WORDPRESS_PLUGIN_ID: "starter-plugin"
       WORDPRESS_THEME_ID: "starter-theme"
+
+volumes:
+  database-volume:
+    driver: local
+  # wordpress-volume:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: "${PWD}/wordpress"
+  # wp-content-volume:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: "${PWD}/wp-content"
+
+networks:
+  app-network:
+    driver: bridge

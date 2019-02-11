@@ -7,7 +7,7 @@ download:
 
 	$(WP_CLI) core download \
 		--version=${WORDPRESS_VERSION} \
-		--locale=${WORDPRESS_LOCALE} \
+		--locale=${WORDPRESS_LOCALE}
 
 configure:
 	@echo "⚙️  Configuring Wordpress database..."
@@ -35,15 +35,13 @@ configure:
 	$(WP_CLI) config set WP_DEBUG ${WORDPRESS_DEBUG} --raw
 	$(WP_CLI) config set WP_HOME ${WORDPRESS_WEBSITE_URL}
 	$(WP_CLI) config set WP_SITEURL ${WORDPRESS_WEBSITE_URL}
-	$(WP_CLI) config set WP_CONTENT_DIR ${WORDPRESS_CONTENT_DIRECTORY}
-	$(WP_CLI) config set WP_CONTENT_URL ${WORDPRESS_WEBSITE_URL}/wp-content
 
 	@echo "⚙️  Activating Starter Plugin"
 	$(WP_CLI) plugin activate ${WORDPRESS_PLUGIN_ID}
 
 	@echo "⬇️  Downloading JointsWP Starter Theme"
-	git clone --depth=1 https://github.com/JeremyEnglert/JointsWP.git ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}
-	rm -rf ${WORDPRESS_CONTENT_DIRECTORY}/themes/${WORDPRESS_THEME_ID}/.git
+	git clone --depth=1 https://github.com/JeremyEnglert/JointsWP.git ${WORDPRESS_DIR}/wp-content/themes/${WORDPRESS_THEME_ID}
+	rm -rf ${WORDPRESS_DIR}/wp-content/themes/${WORDPRESS_THEME_ID}/.git
 
 	@echo "⚙️  Activating JointsWP Starter Theme"
 	$(WP_CLI) theme activate ${WORDPRESS_THEME_ID}
