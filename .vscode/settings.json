@@ -1,0 +1,18 @@
+{
+  // Default to 2 spaces
+  "editor.tabSize": 2,
+
+  // Use PSR-2 for PHP, which has 4 spaces
+  "[php]": {
+    "editor.tabSize": 4
+  },
+
+  // Insert spaces when pressing Tab. This setting is overriden
+  // based on the file contents when `editor.detectIndentation` is true.
+  "editor.insertSpaces": true,
+
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces`
+  // will be detected based on the file contents. Set to false to keep
+  // the values you've explicitly set, above.
+  "editor.detectIndentation": false
+}
