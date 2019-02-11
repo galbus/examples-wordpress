@@ -73,3 +73,4 @@ This project is licensed under the Unlicense - see the [LICENSE](LICENSE) file f
 
 * [Wordpress the right way (part 1): setup](http://blog.michaelperrin.fr/2018/10/26/automate-wordpress-part-1/)
 * [Keeping Plugins Clean: Using Activate, Deactivate and Uninstall Hooks](https://premium.wpmudev.org/blog/activate-deactivate-uninstall-hooks/)
+* [How To Set Up Laravel, Nginx, and MySQL with Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose)
